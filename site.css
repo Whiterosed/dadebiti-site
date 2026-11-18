@@ -5,16 +5,16 @@ html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; font-family: "Dadebiti Sans", system-ui, sans-serif; color: var(--navy); background: #fff; line-height: 1.6; }
 a { color: var(--navy); } a:hover { color: #3A4A75; }
 img { max-width: 100%; }
-.wrap, .bar, nav.cats .in, .follow .in, footer .in { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+.wrap, .bar, nav.cats .in, footer .in { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
 .mark { width: 1.15em; height: 1.15em; flex: none; }
 
 /* თავი: ლოგო მარცხნივ, გამოწერის ბმულები მარჯვნივ, რუბრიკები ცალკე ზოლად */
 .bar { display: flex; align-items: center; gap: 16px; padding-top: 18px; padding-bottom: 16px; }
 .brand { font-size: 30px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 0.28em; line-height: 1.2; }
-.tagline { font-size: 15px; color: var(--muted); padding-left: 16px; border-left: 1px solid var(--line); }
-.follow-top { margin-left: auto; display: flex; gap: 8px; }
-.follow-top a { font-size: 14px; font-weight: 600; text-decoration: none; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; }
-.follow-top a:hover { background: var(--tint); }
+.social { margin-left: auto; display: flex; gap: 10px; }
+.social a { width: 40px; height: 40px; border-radius: 50%; background: var(--navy); color: #fff; display: flex; align-items: center; justify-content: center; }
+.social a:hover { background: var(--accent); color: var(--navy); }
+.social svg { width: 21px; height: 21px; fill: currentColor; }
 nav.cats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; }
 nav.cats .in { display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; }
 nav.cats a { padding: 13px 0; text-decoration: none; white-space: nowrap; }
@@ -113,14 +113,7 @@ article.story .body { font-size: 19px; white-space: pre-line; }
 .share { display: flex; flex-wrap: wrap; gap: 12px; }
 .share a { padding: 11px 20px; border: 1px solid #C9D1E0; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 15px; }
 
-/* გამოწერის ზოლი და ბოლო: მთელ სიგანეზე, ფერადი, რომ გვერდი თეთრ სიცარიელეში არ მთავრდებოდეს */
-.follow { background: var(--warm); }
-.follow .in { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-top: 34px; padding-bottom: 34px; flex-wrap: wrap; }
-.follow h2 { font-size: 24px; }
-.follow p { margin: 6px 0 0; color: var(--muted); max-width: 560px; }
-.follow .go { display: flex; gap: 12px; flex-wrap: wrap; }
-.follow .go a { background: var(--navy); color: #fff; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 999px; }
-.follow .go a:hover { background: #24345c; }
+/* ბოლო: მუქი, მთელ სიგანეზე, რომ გვერდი თეთრ სიცარიელეში არ მთავრდებოდეს */
 footer { background: var(--navy); color: #fff; }
 footer .in { display: flex; justify-content: space-between; align-items: center; gap: 20px 40px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 30px; }
 footer .who { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: rgba(255, 255, 255, .75); }
@@ -144,8 +137,9 @@ footer nav a:hover { color: var(--accent); }
   :root { --pad: 16px; }
   .bar { padding-top: 10px; padding-bottom: 10px; gap: 10px; }
   .brand { font-size: 23px; }
-  .tagline { font-size: 12px; padding-left: 10px; }
-  .follow-top { display: none; }
+  .social { gap: 8px; }
+  .social a { width: 34px; height: 34px; }
+  .social svg { width: 18px; height: 18px; }
   nav.cats { font-size: 14px; }
   nav.cats .in { flex-wrap: nowrap; overflow-x: auto; gap: 0 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
   nav.cats .in::-webkit-scrollbar { display: none; }
@@ -191,10 +185,6 @@ footer nav a:hover { color: var(--accent); }
   article.story figure img { border-radius: 14px; }
   article.story .body { font-size: 17px; }
   .share a { padding: 9px 16px; font-size: 14px; }
-  .follow .in { padding-top: 24px; padding-bottom: 24px; gap: 16px; }
-  .follow h2 { font-size: 20px; }
-  .follow p { font-size: 14px; }
-  .follow .go a { padding: 10px 18px; font-size: 14px; }
   footer .in { padding-top: 22px; padding-bottom: 22px; }
   footer nav { gap: 0 18px; font-size: 14px; }
 }
