@@ -1,32 +1,34 @@
 @font-face { font-family: "Dadebiti Sans"; src: url("fonts/NotoSansGeorgian-VF.ttf") format("truetype"); font-weight: 100 900; font-display: swap; }
-:root { --navy: #14213D; --muted: #4A5568; --accent: #FFC531; --line: #E3E7EF; --tint: #F3F5F9; --warm: #FFF6DC; }
+:root { --navy: #14213D; --muted: #4A5568; --accent: #FFC531; --line: #E3E7EF; --tint: #F3F5F9; --warm: #FFF6DC; --max: 1320px; --pad: 28px; }
 * { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 body { margin: 0; font-family: "Dadebiti Sans", system-ui, sans-serif; color: var(--navy); background: #fff; line-height: 1.6; }
 a { color: var(--navy); } a:hover { color: #3A4A75; }
 img { max-width: 100%; }
-.wrap { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+.wrap, .bar, nav.cats .in, .follow .in, footer .in { max-width: var(--max); margin: 0 auto; padding-left: var(--pad); padding-right: var(--pad); }
+.mark { width: 1.15em; height: 1.15em; flex: none; }
 
-/* თავი: კომპიუტერზე ცენტრში, ტელეფონზე ერთი ვიწრო ზოლი და გვერდზე გასასრიალებელი მენიუ */
-header.top { padding: 28px 24px 0; display: flex; flex-direction: column; gap: 14px; align-items: center; }
-.masthead { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
-.brand { font-size: 34px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 0.28em; line-height: 1.2; }
-.brand .mark { width: 1.15em; height: 1.15em; flex: none; }
-.tagline { font-size: 15px; color: var(--muted); }
-nav.cats { width: 100%; max-width: 1160px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
-  gap: 4px 26px; padding: 6px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; }
-nav.cats a { padding: 10px 0; text-decoration: none; white-space: nowrap; }
+/* თავი: ლოგო მარცხნივ, გამოწერის ბმულები მარჯვნივ, რუბრიკები ცალკე ზოლად */
+.bar { display: flex; align-items: center; gap: 16px; padding-top: 18px; padding-bottom: 16px; }
+.brand { font-size: 30px; font-weight: 800; text-decoration: none; display: inline-flex; align-items: center; gap: 0.28em; line-height: 1.2; }
+.tagline { font-size: 15px; color: var(--muted); padding-left: 16px; border-left: 1px solid var(--line); }
+.follow-top { margin-left: auto; display: flex; gap: 8px; }
+.follow-top a { font-size: 14px; font-weight: 600; text-decoration: none; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; }
+.follow-top a:hover { background: var(--tint); }
+nav.cats { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); font-size: 15px; font-weight: 600; }
+nav.cats .in { display: flex; flex-wrap: wrap; align-items: center; gap: 0 28px; }
+nav.cats a { padding: 13px 0; text-decoration: none; white-space: nowrap; }
 nav.cats a[aria-current] { box-shadow: inset 0 -3px 0 var(--accent); }
 nav.cats a.facts::before { content: "💡 "; }
 
-main { padding: 40px 0 64px; display: flex; flex-direction: column; gap: 52px; }
+main { padding: 32px 0 56px; display: flex; flex-direction: column; gap: 44px; }
 .kicker { font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--muted); }
 /* line-height იგივეა, რაც ბარათებზე (theme.css): უფრო მჭიდრო ხაზებზე ხაზგასმა ზედა ხაზის ასოებს ფარავს */
-h1 { margin: 0; font-size: clamp(26px, 3.3vw, 42px); line-height: 1.34; font-weight: 800; }
-h2 { margin: 0; font-size: 26px; line-height: 1.38; font-weight: 800; }
+h1 { margin: 0; font-size: clamp(26px, 2.5vw, 36px); line-height: 1.34; font-weight: 800; }
+h2 { margin: 0; font-size: 24px; line-height: 1.38; font-weight: 800; }
 h3 { margin: 0; font-size: 19px; line-height: 1.42; font-weight: 800; }
 h1 a, h2 a, h3 a { text-decoration: none; }
-h2.sec { margin-bottom: 22px; display: flex; align-items: center; gap: 14px; }
+h2.sec { margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
 h2.sec::after { content: ""; flex: 1; height: 1px; background: var(--line); }
 /* ხაზგასმა: იგივე ხერხი, რაც ბარათებზე (templates/theme.css; ცვლილებისას ორივე ერთად შეცვალე).
    ფერადი ზოლი ხაზზე ვიწროა (--mt-დან --mb-მდე), რომ ზედა ხაზის ასოებს და მძიმეს არ გადაეფაროს და ორი ხაზგასმული
@@ -43,88 +45,156 @@ mark { --mt: 14%; --mb: 94%; --mr: 0.17em;
       var(--mr) 0 / calc(100% - 2 * var(--mr)) 100% no-repeat;
   color: var(--navy); padding: 0 0.17em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
 
-/* ბარათის ზედა ნაწილი: ფოტო 1080x760 (templates/card_feed.html, .photo). სურათი მთლიანი ბარათია, ჩარჩო მხოლოდ ფოტოს აჩენს,
-   ამიტომ სათაური ორჯერ არ მეორდება: ერთხელ სურათზე და ერთხელ ტექსტად. */
-.shot { display: block; aspect-ratio: 1080 / 760; overflow: hidden; border-radius: 18px; background: var(--tint); }
-.shot img { width: 100%; height: auto; display: block; }
-.shot.plain { background: var(--navy); display: flex; align-items: center; justify-content: center; }
-.shot.plain svg { width: 30%; height: auto; }
-
+.lead, .teaser, .factcard p { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; margin: 0; }
 .more { font-weight: 700; text-decoration: none; box-shadow: inset 0 -3px 0 var(--accent); align-self: flex-start; padding: 2px 0; }
-.clamp, .lead, .teaser, .factband p { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
+.tag, .chip { align-self: flex-start; background: var(--accent); color: var(--navy); font-size: 13px; font-weight: 800; letter-spacing: .04em; padding: 4px 12px; border-radius: 999px; }
 
-/* მთავარი ამბავი */
-.hero { display: grid; grid-template-columns: 1.25fr 1fr; gap: 40px; align-items: center; }
-.hero .text { display: flex; flex-direction: column; gap: 14px; min-width: 0; }
-.lead { margin: 0; font-size: 17px; color: var(--muted); -webkit-line-clamp: 4; }
+/* ამბის სურათი: ნამდვილი ფოტო, ჩარჩოს ზომაზე მოჭრილი (ბარათის ფოტოს იგივე პოზიციით). ფოტოს გარეშე: მუქი ფილა მთავარი ფრაზით. */
+.pic { display: block; position: relative; aspect-ratio: 3 / 2; overflow: hidden; border-radius: 16px; background: var(--tint); }
+.pic img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .3s; }
+.pic:hover img { transform: scale(1.03); }
+.pic.plain { background: var(--navy); display: flex; align-items: center; justify-content: center; padding: 8% 10%; text-decoration: none; }
+.pic.plain .phrase { color: var(--accent); font-weight: 800; font-size: clamp(18px, 2vw, 26px); line-height: 1.35; text-align: center; }
+.pic.plain .mark { position: absolute; left: 14px; top: 14px; width: 30px; height: 30px; }
 
-/* დღის ფაქტი: ამბებისგან ფერით და ფორმით გამოყოფილი ზოლი */
-.factband { display: grid; grid-template-columns: 300px 1fr; gap: 28px; align-items: center; background: var(--warm); border-radius: 22px; padding: 22px; }
-.factband .text { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
-.factband p { margin: 0; color: var(--muted); font-size: 16px; -webkit-line-clamp: 3; }
-.tag { align-self: flex-start; background: var(--accent); color: var(--navy); font-size: 13px; font-weight: 800; letter-spacing: .04em; padding: 4px 12px; border-radius: 999px; }
+/* პირველი რიგი: მთავარი ამბავი (ფოტო სათაურით ზედ) და გვერდით დღის ფაქტი; ორივე ერთი სიმაღლისაა */
+.lead-row { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 28px; align-items: stretch; }
+.lead-row.solo { grid-template-columns: minmax(0, 1fr); }
+.hero { position: relative; border-radius: 22px; overflow: hidden; min-height: 520px; background: var(--navy); display: flex; }
+.hero-pic { position: absolute; inset: 0; }
+.hero-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.hero .credit { position: absolute; top: 14px; right: 14px; font-size: 12px; color: #fff; background: rgba(20, 33, 61, .6); padding: 3px 10px; border-radius: 999px; max-width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hero-text { position: relative; align-self: flex-end; width: 100%; padding: 110px 34px 30px; display: flex; flex-direction: column; gap: 12px; color: #fff;
+  background: linear-gradient(to bottom, rgba(20, 33, 61, 0), rgba(20, 33, 61, .78) 38%, rgba(20, 33, 61, .95)); }
+.hero-text h1 a { color: #fff; }
+.hero.long h1 { font-size: clamp(22px, 2vw, 29px); }
+.hero .lead { color: rgba(255, 255, 255, .88); font-size: 16px; -webkit-line-clamp: 2; }
+.hero .meta { font-size: 13px; color: rgba(255, 255, 255, .75); }
+.hero.plain .hero-text { background: none; align-self: center; padding: 40px 44px; max-width: 760px; }
+.hero.plain h1 { font-size: clamp(26px, 2.8vw, 40px); }
+.hero-mark { position: absolute; right: -60px; bottom: -70px; opacity: .14; }
+.hero-mark .mark { width: 380px; height: 380px; }
+.lead-row.solo .hero { min-height: 460px; }
 
-/* ამბების სია */
-.list { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px 28px; }
-.item { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
-.item .t { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
-.item .teaser { display: none; margin: 0; color: var(--muted); font-size: 15px; -webkit-line-clamp: 3; }
-/* ორი ან ერთი ამბავი: ბადე ცარიელ სვეტებს დატოვებდა, ამიტომ თითო ამბავი მთელ სიგანეზე, სურათი მარცხნივ */
-.list.wide { grid-template-columns: 1fr; gap: 28px; }
-.list.wide .item { flex-direction: row; gap: 28px; align-items: center; }
-.list.wide .shot { flex: 0 0 36%; max-width: 400px; }
-.list.wide .teaser { display: -webkit-box; }
-.list.wide h3 { font-size: 23px; }
+.factcard { background: var(--warm); border-radius: 22px; padding: 18px; display: flex; flex-direction: column; gap: 14px; min-width: 0; }
+.factcard .pic { aspect-ratio: 16 / 10; }
+.factcard .t { display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+.factcard h2 { font-size: 21px; }
+.factcard p { color: var(--muted); font-size: 15px; -webkit-line-clamp: 4; }
+.factcard .more { margin-top: auto; }
+.lead-row.solo .factcard { flex-direction: row; align-items: center; gap: 28px; padding: 22px; }
+.lead-row.solo .factcard .pic { flex: 0 0 34%; }
+
+/* ამბების ბადე */
+.grid { display: grid; gap: 36px 28px; }
+.grid + .grid { margin-top: 36px; }
+.grid.n3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.n1 { grid-template-columns: minmax(0, 1fr); }
+.card { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.card .t { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.card .teaser { color: var(--muted); font-size: 15px; -webkit-line-clamp: 2; }
+.grid.n2 .pic { aspect-ratio: 16 / 9; }
+.grid.n2 h3 { font-size: 22px; }
+.grid.n1 .card { flex-direction: row; gap: 32px; align-items: center; }
+.grid.n1 .pic { flex: 0 0 46%; aspect-ratio: 16 / 9; }
+.grid.n1 h3 { font-size: 26px; }
+.grid.n1 .teaser { font-size: 16px; -webkit-line-clamp: 4; }
+.grid.n1 .t { gap: 10px; }
 
 .empty { padding: 48px 24px; background: var(--tint); border-radius: 22px; text-align: center; color: var(--muted); }
-article.story { max-width: 760px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+article.story { max-width: 780px; width: 100%; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+article.story h1 { font-size: clamp(26px, 2.8vw, 38px); }
+article.story figure { margin: 0; }
+article.story figure img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; display: block; border-radius: 18px; }
+article.story figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
 article.story .body { font-size: 19px; white-space: pre-line; }
 .source { padding: 16px 20px; background: var(--tint); border-radius: 16px; font-size: 15px; overflow-wrap: anywhere; }
 .share { display: flex; flex-wrap: wrap; gap: 12px; }
 .share a { padding: 11px 20px; border: 1px solid #C9D1E0; border-radius: 999px; text-decoration: none; font-weight: 600; font-size: 15px; }
-footer { border-top: 1px solid var(--line); padding: 24px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 28px; font-size: 15px; font-weight: 600; }
-footer a { padding: 10px 0; text-decoration: none; }
+
+/* გამოწერის ზოლი და ბოლო: მთელ სიგანეზე, ფერადი, რომ გვერდი თეთრ სიცარიელეში არ მთავრდებოდეს */
+.follow { background: var(--warm); }
+.follow .in { display: flex; align-items: center; justify-content: space-between; gap: 28px; padding-top: 34px; padding-bottom: 34px; flex-wrap: wrap; }
+.follow h2 { font-size: 24px; }
+.follow p { margin: 6px 0 0; color: var(--muted); max-width: 560px; }
+.follow .go { display: flex; gap: 12px; flex-wrap: wrap; }
+.follow .go a { background: var(--navy); color: #fff; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 999px; }
+.follow .go a:hover { background: #24345c; }
+footer { background: var(--navy); color: #fff; }
+footer .in { display: flex; justify-content: space-between; align-items: center; gap: 20px 40px; flex-wrap: wrap; padding-top: 30px; padding-bottom: 30px; }
+footer .who { display: flex; flex-direction: column; gap: 4px; font-size: 14px; color: rgba(255, 255, 255, .75); }
+footer .brand { color: #fff; font-size: 24px; }
+footer nav { display: flex; flex-wrap: wrap; gap: 4px 26px; font-size: 15px; font-weight: 600; }
+footer nav a { color: #fff; padding: 8px 0; text-decoration: none; }
+footer nav a:hover { color: var(--accent); }
 .muted { color: var(--muted); font-size: 15px; }
 
 @media (max-width: 1000px) {
-  .list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .hero { grid-template-columns: 1fr 1fr; gap: 28px; }
+  .lead-row { grid-template-columns: minmax(0, 1fr); }
+  .factcard { flex-direction: row; align-items: center; gap: 22px; }
+  .factcard .pic { flex: 0 0 38%; }
+  .grid { gap: 28px 20px; }
+  .grid.n3 h3 { font-size: 17px; }                      /* პლანშეტზეც სამი სვეტი რჩება: ბოლო რიგი სავსეა */
+  .hero { min-height: 420px; }
 }
 
-/* ტელეფონი: ერთ ეკრანზე მთავარი ამბავი მთლიანად ეტევა, ქვემოთ კომპაქტური სტრიქონები (პატარა სურათი და სათაური) */
+/* ტელეფონი: მთავარი ამბავი პირველ ეკრანზე ეტევა (ფოტო, მის ქვეშ სათაური), ქვემოთ კომპაქტური სტრიქონები */
 @media (max-width: 720px) {
-  .wrap { padding: 0 16px; }
-  header.top { padding: 12px 0 0; gap: 10px; align-items: stretch; }
-  .masthead { flex-direction: row; justify-content: space-between; align-items: center; padding: 0 16px; }
-  .brand { font-size: 24px; }
-  .tagline { font-size: 13px; }
-  nav.cats { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; gap: 0 20px; padding: 0 16px; font-size: 14px;
-    scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  nav.cats::-webkit-scrollbar { display: none; }
-  nav.cats a[aria-current] { order: -1; }           /* არჩეული რუბრიკა ყოველთვის ჩანს, გასრიალების გარეშე */
-  main { padding: 20px 0 44px; gap: 32px; }
-  h1 { font-size: 23px; }
+  :root { --pad: 16px; }
+  .bar { padding-top: 10px; padding-bottom: 10px; gap: 10px; }
+  .brand { font-size: 23px; }
+  .tagline { font-size: 12px; padding-left: 10px; }
+  .follow-top { display: none; }
+  nav.cats { font-size: 14px; }
+  nav.cats .in { flex-wrap: nowrap; overflow-x: auto; gap: 0 20px; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  nav.cats .in::-webkit-scrollbar { display: none; }
+  nav.cats a { padding: 10px 0; }
+  nav.cats a[aria-current] { order: -1; }                /* არჩეული რუბრიკა ყოველთვის ჩანს, გასრიალების გარეშე */
+  main { padding: 16px 0 36px; gap: 28px; }
+  h1, .hero.plain h1, article.story h1 { font-size: 22px; }
+  .hero.long h1 { font-size: 20px; }
   h2 { font-size: 20px; }
   h2.sec { margin-bottom: 14px; }
-  .shot { border-radius: 14px; }
-  .hero { grid-template-columns: 1fr; gap: 14px; }
-  .hero .text { gap: 8px; }
-  .lead { font-size: 15px; -webkit-line-clamp: 3; }
-  .factband { grid-template-columns: 112px 1fr; gap: 14px; padding: 14px; border-radius: 18px; align-items: start; }
-  .factband h2 { font-size: 17px; }
-  .factband p { display: none; }
-  .factband .text { gap: 6px; }
-  .tag { font-size: 11px; padding: 3px 10px; }
-  .more { font-size: 14px; }
-  .list, .list.wide { grid-template-columns: 1fr; gap: 16px; }
-  .item, .list.wide .item { flex-direction: row; gap: 14px; align-items: flex-start; }
-  .item .shot, .list.wide .shot { flex: 0 0 38%; max-width: none; border-radius: 12px; }
-  .item .t { gap: 3px; }
-  .item h3, .list.wide h3 { font-size: 16px; line-height: 1.4; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
-  .item .teaser, .list.wide .teaser { display: none; }
+  .lead-row { gap: 20px; }
+  .hero, .lead-row.solo .hero { min-height: 0; border-radius: 0; background: none; flex-direction: column; overflow: visible; }
+  .hero-pic { position: relative; inset: auto; aspect-ratio: 16 / 10; border-radius: 14px; overflow: hidden; display: block; }
+  .hero .credit { top: 8px; right: 8px; font-size: 10px; }
+  .hero-text { padding: 12px 0 0; background: none; color: var(--navy); gap: 8px; }
+  .hero-text h1 a { color: var(--navy); }
+  .hero .lead { color: var(--muted); font-size: 15px; -webkit-line-clamp: 3; }
+  .hero .meta { color: var(--muted); font-size: 12px; }
+  .hero.plain { background: var(--navy); border-radius: 14px; overflow: hidden; }
+  .hero.plain .hero-text { padding: 22px 18px; color: #fff; }
+  .hero.plain .hero-text h1 a { color: #fff; }
+  .hero.plain .lead, .hero.plain .meta { color: rgba(255, 255, 255, .8); }
+  .hero-mark .mark { width: 200px; height: 200px; }
+  .factcard, .lead-row.solo .factcard { flex-direction: row; align-items: flex-start; gap: 14px; padding: 12px; border-radius: 16px; }
+  .factcard .pic, .lead-row.solo .factcard .pic { flex: 0 0 36%; aspect-ratio: 4 / 3; border-radius: 10px; }
+  .factcard .t { gap: 6px; }
+  .factcard h2 { font-size: 16px; line-height: 1.4; }
+  .factcard p { display: none; }
+  .tag, .chip { font-size: 11px; padding: 3px 10px; }
+  .more { font-size: 13px; }
+  .grid, .grid.n1, .grid.n2, .grid.n3 { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .grid + .grid { margin-top: 16px; }
+  .card, .grid.n1 .card { flex-direction: row; gap: 14px; align-items: flex-start; }
+  .card .pic, .grid.n1 .pic, .grid.n2 .pic { flex: 0 0 38%; aspect-ratio: 4 / 3; border-radius: 10px; }
+  .card .t, .grid.n1 .t { gap: 3px; }
+  .card h3, .grid.n1 h3, .grid.n2 h3 { font-size: 16px; line-height: 1.4; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+  .card .teaser, .grid.n1 .teaser { display: none; }
+  .pic.plain { padding: 6px; }
+  .pic.plain .phrase { font-size: 12px; line-height: 1.3; }
+  .pic.plain .mark { width: 16px; height: 16px; left: 6px; top: 6px; }
   .kicker { font-size: 12px; }
   article.story { gap: 14px; }
+  article.story figure img { border-radius: 14px; }
   article.story .body { font-size: 17px; }
   .share a { padding: 9px 16px; font-size: 14px; }
-  footer { gap: 0 20px; font-size: 14px; padding: 16px; }
+  .follow .in { padding-top: 24px; padding-bottom: 24px; gap: 16px; }
+  .follow h2 { font-size: 20px; }
+  .follow p { font-size: 14px; }
+  .follow .go a { padding: 10px 18px; font-size: 14px; }
+  footer .in { padding-top: 22px; padding-bottom: 22px; }
+  footer nav { gap: 0 18px; font-size: 14px; }
 }
