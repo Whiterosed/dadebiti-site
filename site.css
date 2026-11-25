@@ -188,3 +188,13 @@ footer nav a:hover { color: var(--accent); }
   footer .in { padding-top: 22px; padding-bottom: 22px; }
   footer nav { gap: 0 18px; font-size: 14px; }
 }
+
+/* ტოპ ფაქტები (ფაქტების გვერდი) და მითი/სინამდვილე (ფაქტის გვერდი) */
+section.top { margin-bottom: 8px; }
+.myth { display: grid; gap: 12px; margin: 0 0 26px; }
+.myth p { margin: 0; padding: 16px 20px; border-radius: 16px; line-height: 1.55; }
+.myth b { display: block; font-size: 13px; letter-spacing: 0.06em; margin-bottom: 4px; }
+.myth .m { background: #FFF1F3; border-left: 4px solid #F43F5E; }
+.myth .m b { color: #BE123C; }
+.myth .r { background: #ECFDF5; border-left: 4px solid #10B981; }
+.myth .r b { color: #047857; }
